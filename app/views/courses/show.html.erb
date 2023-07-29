@@ -1,0 +1,31 @@
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<h2> Course Name</h2><%= @course.name %>
+ <h2>Description  </h2><%= @course.description %>
+<% if @course.tutors.any? %>
+  <h2>All Tutors</h2>
+   <table style="width:100%">
+    <tr>
+      <td>Name</td>
+      <td>Email</td>
+      <td>Experience</td>
+      <td>Age</td>
+
+    </tr>
+    <tr>
+      <% @course.tutors.each do |tutor| %>
+        <td><%= tutor.name %> </td>
+       <td><%= tutor.email %> </td>
+        <td><%= tutor.experience%> </td>
+        <td><%= tutor.age %> </td>
+    </tr>
+    <% end %>
+  
+<% else %>
+  <p>No tutors for this course yet.</p>
+<% end %>
+<%= link_to 'Back', courses_path %>
+
